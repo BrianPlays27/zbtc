@@ -1,4 +1,3 @@
-// Sample item database
 const itemDatabase = {
     'sword': { value: 50, rarity: 'common' },
     'diamond': { value: 200, rarity: 'rare' },
@@ -13,7 +12,6 @@ const itemDatabase = {
     'epic': { value: 300, rarity: 'epic' },
 };
 
-// Search for item value
 function searchItem() {
     const itemName = document.getElementById('item-name').value.toLowerCase().trim();
     const resultDiv = document.getElementById('item-result');
@@ -38,7 +36,6 @@ function searchItem() {
         resultDiv.innerHTML = result;
         suggestionsDiv.innerHTML = '';
     } else {
-        // Find similar items
         const similar = Object.keys(itemDatabase).filter(key => 
             key.includes(itemName) || itemName.includes(key)
         );
@@ -63,7 +60,6 @@ function selectItem(itemName) {
     searchItem();
 }
 
-// Calculate if trade is fair
 function calculateTrade() {
     const offerValue = parseFloat(document.getElementById('offer-value').value);
     const receiveValue = parseFloat(document.getElementById('receive-value').value);
@@ -107,7 +103,6 @@ function calculateTrade() {
     resultDiv.innerHTML = result;
 }
 
-// Calculate bulk trade
 function calculateBulk() {
     const price = parseFloat(document.getElementById('item-price').value);
     const quantity = parseFloat(document.getElementById('quantity').value);
@@ -135,7 +130,6 @@ function calculateBulk() {
     resultDiv.innerHTML = result;
 }
 
-// Calculate profit
 function calculateProfit() {
     const buyPrice = parseFloat(document.getElementById('buy-price').value);
     const sellPrice = parseFloat(document.getElementById('sell-price').value);
@@ -164,7 +158,6 @@ function calculateProfit() {
     resultDiv.innerHTML = result;
 }
 
-// Calculate ROI
 function calculateROI() {
     const initial = parseFloat(document.getElementById('initial-investment').value);
     const current = parseFloat(document.getElementById('current-value').value);
@@ -190,7 +183,6 @@ function calculateROI() {
     resultDiv.innerHTML = result;
 }
 
-// Add row for multi-item trade
 function addTradeRow(type) {
     const containerId = type === 'offer' ? 'trade-items-container' : 'trade-receive-container';
     const container = document.getElementById(containerId);
@@ -208,7 +200,6 @@ function addTradeRow(type) {
     container.appendChild(row);
 }
 
-// Compare multi-item trade
 function compareMultiTrade() {
     const offerRows = document.querySelectorAll('#trade-items-container .trade-item-row');
     const receiveRows = document.querySelectorAll('#trade-receive-container .trade-item-row');
@@ -275,7 +266,6 @@ function compareMultiTrade() {
     resultDiv.innerHTML = result;
 }
 
-// Allow Enter key to trigger calculations
 document.addEventListener('DOMContentLoaded', function() {
     const inputs = document.querySelectorAll('input');
     inputs.forEach(input => {
