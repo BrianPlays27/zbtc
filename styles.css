@@ -45,6 +45,10 @@ main {
     margin-bottom: 40px;
 }
 
+main > .full-width {
+    grid-column: 1 / -1;
+}
+
 .calculator-section {
     background: linear-gradient(135deg, #0f3460 0%, #1a1a2e 100%);
     border: 2px solid #00ff41;
@@ -87,6 +91,7 @@ main {
     border-radius: 4px;
     font-size: 1em;
     transition: all 0.3s ease;
+    margin-bottom: 5px;
 }
 
 .input-group input:focus {
@@ -154,6 +159,55 @@ button:active {
     color: #ffd700;
 }
 
+.suggestions {
+    margin-top: 10px;
+    padding: 10px;
+    background: rgba(0, 255, 65, 0.05);
+    border-radius: 4px;
+}
+
+.suggestions a {
+    color: #00ff41;
+    text-decoration: underline;
+    cursor: pointer;
+    margin-right: 10px;
+    display: inline-block;
+    padding: 5px;
+}
+
+.suggestions a:hover {
+    text-decoration: none;
+    text-shadow: 0 0 10px #00ff41;
+}
+
+.trade-item-row {
+    background: rgba(0, 255, 65, 0.05);
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.trade-item-row .input-group {
+    display: grid;
+    grid-template-columns: 1fr 80px 100px 50px;
+    gap: 8px;
+    align-items: start;
+}
+
+.trade-item-row input {
+    margin-bottom: 0 !important;
+}
+
+.trade-item-row button {
+    margin: 0;
+    width: auto;
+    padding: 6px 12px;
+    background: #ff6b6b;
+    font-size: 0.9em;
+    height: fit-content;
+    margin-top: 0;
+}
+
 footer {
     text-align: center;
     padding: 20px;
@@ -174,6 +228,15 @@ footer {
 
     .calculator-section {
         padding: 15px;
+    }
+
+    .trade-item-row .input-group {
+        grid-template-columns: 1fr;
+    }
+
+    .trade-item-row button {
+        width: 100%;
+        margin-top: 5px;
     }
 }
 
