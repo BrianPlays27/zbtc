@@ -3,127 +3,131 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zombie Calculator</title>
+    <title>Zombie Trading Calculator</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>🧟 Zombie Calculator</h1>
-            <p>Survival Simulator & Resource Manager</p>
+            <h1>🧟 Zombie Trading Calculator</h1>
+            <p>Calculate Fair Trades & Item Values</p>
         </header>
 
         <main>
-            <!-- Population Growth Tab -->
+            <!-- Quick Value Lookup -->
             <section class="calculator-section">
-                <h2>Population Growth</h2>
+                <h2>Item Value Lookup</h2>
                 <div class="input-group">
-                    <label for="initial-zombies">Initial Zombies:</label>
-                    <input type="number" id="initial-zombies" min="1" value="10">
+                    <label for="item-name">Item Name:</label>
+                    <input type="text" id="item-name" placeholder="Enter item name">
                 </div>
-                <div class="input-group">
-                    <label for="growth-rate">Daily Growth Rate (%):</label>
-                    <input type="number" id="growth-rate" min="0" max="100" step="0.1" value="15">
-                </div>
-                <div class="input-group">
-                    <label for="days">Days:</label>
-                    <input type="number" id="days" min="1" value="30">
-                </div>
-                <button onclick="calculatePopulation()">Calculate</button>
-                <div id="population-result" class="result"></div>
+                <button onclick="searchItem()">Search Value</button>
+                <div id="item-result" class="result"></div>
+                <div id="item-suggestions" class="suggestions"></div>
             </section>
 
-            <!-- Survival Chance Tab -->
+            <!-- Trade Calculator -->
             <section class="calculator-section">
-                <h2>Survival Chance</h2>
+                <h2>Trade Value Calculator</h2>
                 <div class="input-group">
-                    <label for="survivors">Number of Survivors:</label>
-                    <input type="number" id="survivors" min="1" value="5">
+                    <label for="offer-value">Your Offer Value:</label>
+                    <input type="number" id="offer-value" min="0" step="0.01" placeholder="Total value of items offered">
                 </div>
                 <div class="input-group">
-                    <label for="zombies">Number of Zombies:</label>
-                    <input type="number" id="zombies" min="1" value="100">
+                    <label for="receive-value">Receive Value:</label>
+                    <input type="number" id="receive-value" min="0" step="0.01" placeholder="Total value of items receiving">
                 </div>
-                <div class="input-group">
-                    <label for="weapons">Weapons Available:</label>
-                    <input type="number" id="weapons" min="0" value="3">
-                </div>
-                <div class="input-group">
-                    <label for="defense">Defense Level (%):</label>
-                    <input type="number" id="defense" min="0" max="100" value="50">
-                </div>
-                <button onclick="calculateSurvival()">Calculate</button>
-                <div id="survival-result" class="result"></div>
+                <button onclick="calculateTrade()">Analyze Trade</button>
+                <div id="trade-result" class="result"></div>
             </section>
 
-            <!-- Resource Management Tab -->
+            <!-- Bulk Trade Calculator -->
             <section class="calculator-section">
-                <h2>Resource Management</h2>
+                <h2>Bulk Trade Calculator</h2>
                 <div class="input-group">
-                    <label for="food-supply">Food Supply (days):</label>
-                    <input type="number" id="food-supply" min="1" value="30">
+                    <label for="item-price">Item Unit Price:</label>
+                    <input type="number" id="item-price" min="0" step="0.01" placeholder="Price per item">
                 </div>
                 <div class="input-group">
-                    <label for="people-count">People to Feed:</label>
-                    <input type="number" id="people-count" min="1" value="5">
+                    <label for="quantity">Quantity:</label>
+                    <input type="number" id="quantity" min="1" placeholder="Number of items">
                 </div>
                 <div class="input-group">
-                    <label for="daily-consumption">Daily Per Person (units):</label>
-                    <input type="number" id="daily-consumption" min="0.1" step="0.1" value="2">
+                    <label for="discount-percent">Discount (%):</label>
+                    <input type="number" id="discount-percent" min="0" max="100" step="0.1" value="0" placeholder="Bulk discount percentage">
                 </div>
-                <div class="input-group">
-                    <label for="daily-production">Daily Production (units):</label>
-                    <input type="number" id="daily-production" min="0" step="0.1" value="0.5">
-                </div>
-                <button onclick="calculateResources()">Calculate</button>
-                <div id="resources-result" class="result"></div>
+                <button onclick="calculateBulk()">Calculate</button>
+                <div id="bulk-result" class="result"></div>
             </section>
 
-            <!-- Infection Spread Tab -->
+            <!-- Profit Calculator -->
             <section class="calculator-section">
-                <h2>Infection Spread</h2>
+                <h2>Profit Calculator</h2>
                 <div class="input-group">
-                    <label for="infected-initial">Initially Infected:</label>
-                    <input type="number" id="infected-initial" min="1" value="1">
+                    <label for="buy-price">Buy Price:</label>
+                    <input type="number" id="buy-price" min="0" step="0.01" placeholder="Price you paid">
                 </div>
                 <div class="input-group">
-                    <label for="population-total">Total Population:</label>
-                    <input type="number" id="population-total" min="1" value="1000">
+                    <label for="sell-price">Sell Price:</label>
+                    <input type="number" id="sell-price" min="0" step="0.01" placeholder="Price you're selling for">
                 </div>
                 <div class="input-group">
-                    <label for="transmission-rate">Transmission Rate (contacts/day):</label>
-                    <input type="number" id="transmission-rate" min="0" step="0.1" value="0.3">
+                    <label for="quantity-profit">Quantity:</label>
+                    <input type="number" id="quantity-profit" min="1" placeholder="Number of items">
                 </div>
-                <div class="input-group">
-                    <label for="quarantine-percent">Quarantine Effectiveness (%):</label>
-                    <input type="number" id="quarantine-percent" min="0" max="100" value="0">
-                </div>
-                <button onclick="calculateInfection()">Calculate</button>
-                <div id="infection-result" class="result"></div>
+                <button onclick="calculateProfit()">Calculate</button>
+                <div id="profit-result" class="result"></div>
             </section>
 
-            <!-- Weapon Efficiency Tab -->
+            <!-- Trade History -->
             <section class="calculator-section">
-                <h2>Weapon Efficiency</h2>
+                <h2>Trade History & ROI</h2>
                 <div class="input-group">
-                    <label for="ammo-count">Ammo Available:</label>
-                    <input type="number" id="ammo-count" min="1" value="100">
+                    <label for="initial-investment">Initial Investment:</label>
+                    <input type="number" id="initial-investment" min="0" step="0.01" placeholder="Starting capital">
                 </div>
                 <div class="input-group">
-                    <label for="zombies-killed">Kills Per Magazine:</label>
-                    <input type="number" id="zombies-killed" min="1" value="15">
+                    <label for="current-value">Current Portfolio Value:</label>
+                    <input type="number" id="current-value" min="0" step="0.01" placeholder="What your items are worth now">
                 </div>
-                <div class="input-group">
-                    <label for="total-zombies">Total Zombies:</label>
-                    <input type="number" id="total-zombies" min="1" value="500">
+                <button onclick="calculateROI()">Calculate ROI</button>
+                <div id="roi-result" class="result"></div>
+            </section>
+
+            <!-- Multi-Item Trade Comparison -->
+            <section class="calculator-section full-width">
+                <h2>Multi-Item Trade Comparison</h2>
+                <div id="trade-items-container">
+                    <div class="trade-item-row">
+                        <div class="input-group">
+                            <label>Your Items (Offering):</label>
+                            <input type="text" class="offer-item" placeholder="Item name" maxlength="30">
+                            <input type="number" class="offer-qty" placeholder="Qty" min="1" value="1">
+                            <input type="number" class="offer-value" placeholder="Price each" min="0" step="0.01">
+                        </div>
+                    </div>
                 </div>
-                <button onclick="calculateWeapons()">Calculate</button>
-                <div id="weapons-result" class="result"></div>
+                <button onclick="addTradeRow('offer')">+ Add Item (Offering)</button>
+                
+                <div id="trade-receive-container" style="margin-top: 20px;">
+                    <div class="trade-item-row">
+                        <div class="input-group">
+                            <label>Items Receiving:</label>
+                            <input type="text" class="receive-item" placeholder="Item name" maxlength="30">
+                            <input type="number" class="receive-qty" placeholder="Qty" min="1" value="1">
+                            <input type="number" class="receive-value" placeholder="Price each" min="0" step="0.01">
+                        </div>
+                    </div>
+                </div>
+                <button onclick="addTradeRow('receive')">+ Add Item (Receiving)</button>
+                
+                <button onclick="compareMultiTrade()" style="margin-top: 20px;">Compare Trade</button>
+                <div id="multi-trade-result" class="result"></div>
             </section>
         </main>
 
         <footer>
-            <p>Stay alive. Make it count. 🧟‍♂️</p>
+            <p>Trade smart. Profit big. 🧟‍♂️💰</p>
         </footer>
     </div>
 
