@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zombie Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🧟 Zombie Calculator</h1>
+            <p>Survival Simulator & Resource Manager</p>
+        </header>
+
+        <main>
+            <!-- Population Growth Tab -->
+            <section class="calculator-section">
+                <h2>Population Growth</h2>
+                <div class="input-group">
+                    <label for="initial-zombies">Initial Zombies:</label>
+                    <input type="number" id="initial-zombies" min="1" value="10">
+                </div>
+                <div class="input-group">
+                    <label for="growth-rate">Daily Growth Rate (%):</label>
+                    <input type="number" id="growth-rate" min="0" max="100" step="0.1" value="15">
+                </div>
+                <div class="input-group">
+                    <label for="days">Days:</label>
+                    <input type="number" id="days" min="1" value="30">
+                </div>
+                <button onclick="calculatePopulation()">Calculate</button>
+                <div id="population-result" class="result"></div>
+            </section>
+
+            <!-- Survival Chance Tab -->
+            <section class="calculator-section">
+                <h2>Survival Chance</h2>
+                <div class="input-group">
+                    <label for="survivors">Number of Survivors:</label>
+                    <input type="number" id="survivors" min="1" value="5">
+                </div>
+                <div class="input-group">
+                    <label for="zombies">Number of Zombies:</label>
+                    <input type="number" id="zombies" min="1" value="100">
+                </div>
+                <div class="input-group">
+                    <label for="weapons">Weapons Available:</label>
+                    <input type="number" id="weapons" min="0" value="3">
+                </div>
+                <div class="input-group">
+                    <label for="defense">Defense Level (%):</label>
+                    <input type="number" id="defense" min="0" max="100" value="50">
+                </div>
+                <button onclick="calculateSurvival()">Calculate</button>
+                <div id="survival-result" class="result"></div>
+            </section>
+
+            <!-- Resource Management Tab -->
+            <section class="calculator-section">
+                <h2>Resource Management</h2>
+                <div class="input-group">
+                    <label for="food-supply">Food Supply (days):</label>
+                    <input type="number" id="food-supply" min="1" value="30">
+                </div>
+                <div class="input-group">
+                    <label for="people-count">People to Feed:</label>
+                    <input type="number" id="people-count" min="1" value="5">
+                </div>
+                <div class="input-group">
+                    <label for="daily-consumption">Daily Per Person (units):</label>
+                    <input type="number" id="daily-consumption" min="0.1" step="0.1" value="2">
+                </div>
+                <div class="input-group">
+                    <label for="daily-production">Daily Production (units):</label>
+                    <input type="number" id="daily-production" min="0" step="0.1" value="0.5">
+                </div>
+                <button onclick="calculateResources()">Calculate</button>
+                <div id="resources-result" class="result"></div>
+            </section>
+
+            <!-- Infection Spread Tab -->
+            <section class="calculator-section">
+                <h2>Infection Spread</h2>
+                <div class="input-group">
+                    <label for="infected-initial">Initially Infected:</label>
+                    <input type="number" id="infected-initial" min="1" value="1">
+                </div>
+                <div class="input-group">
+                    <label for="population-total">Total Population:</label>
+                    <input type="number" id="population-total" min="1" value="1000">
+                </div>
+                <div class="input-group">
+                    <label for="transmission-rate">Transmission Rate (contacts/day):</label>
+                    <input type="number" id="transmission-rate" min="0" step="0.1" value="0.3">
+                </div>
+                <div class="input-group">
+                    <label for="quarantine-percent">Quarantine Effectiveness (%):</label>
+                    <input type="number" id="quarantine-percent" min="0" max="100" value="0">
+                </div>
+                <button onclick="calculateInfection()">Calculate</button>
+                <div id="infection-result" class="result"></div>
+            </section>
+
+            <!-- Weapon Efficiency Tab -->
+            <section class="calculator-section">
+                <h2>Weapon Efficiency</h2>
+                <div class="input-group">
+                    <label for="ammo-count">Ammo Available:</label>
+                    <input type="number" id="ammo-count" min="1" value="100">
+                </div>
+                <div class="input-group">
+                    <label for="zombies-killed">Kills Per Magazine:</label>
+                    <input type="number" id="zombies-killed" min="1" value="15">
+                </div>
+                <div class="input-group">
+                    <label for="total-zombies">Total Zombies:</label>
+                    <input type="number" id="total-zombies" min="1" value="500">
+                </div>
+                <button onclick="calculateWeapons()">Calculate</button>
+                <div id="weapons-result" class="result"></div>
+            </section>
+        </main>
+
+        <footer>
+            <p>Stay alive. Make it count. 🧟‍♂️</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
